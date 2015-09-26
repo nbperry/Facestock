@@ -2,5 +2,11 @@ language: ruby
 rvm:
   - 2.2.3
 
+before_script:
+  - mysql -e 'create database myapp_test;'
+
+before_install:
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
+
 notifications:
   slack: facestock:aa2ZsjKISKTUT320lxuFPOBT
