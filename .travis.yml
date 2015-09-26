@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 2.2.3
+
+notifications:
+  slack: facestock:aa2ZsjKISKTUT320lxuFPOBT
