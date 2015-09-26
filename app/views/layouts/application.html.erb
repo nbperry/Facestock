@@ -16,10 +16,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
-
-      </div>
         <ul class="nav navbar-nav">
           <li><a href="#">Home</a></li>
           <li><a href="#">Stocks</a></li>
@@ -28,13 +26,15 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- if authenticated show profile and logout buttons -->
+
           <!-- Otherwise show login button -->
-          <li><a href="#">Login</a></li>
+          <li><a class="navbar-link" href="#">Login</a></li>
         </ul>
+      </div>
     </nav>
 
-
-<%= yield %>
-
+    <div class="container">
+        <%= yield %>
+    </div>
 </body>
 </html>
