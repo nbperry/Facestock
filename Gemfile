@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-facebook'
 gem "koala", "~> 2.2"
 
+gem 'pg', group: [:production, :staging]
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,7 +44,6 @@ group :development, :test do
 end
 
 group :development do
-
 
 
   #Use the following gems for Debuging
