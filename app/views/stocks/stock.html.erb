@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+</head>
+<body>
+    <h1> <%= @name %> ( <%= @stock %> )</h1>
+    <br>
+    ask <%= @ask %>
+    <br>
+    high <%= @high %>
+    <br>
+    low <%= @low %>
+    <br>
+    high year <%= @high52 %>
+    <br>
+    low year <%= @low52 %>
+    <br>
+    last close <%= @lastclose %>
+    <br>
+    close <%= @close %>
+    <br>
+    Line Chart
+    <%= @chart %>
+
+</body>
+</html>
