@@ -14,7 +14,7 @@
               <a href="stock?ticker=<%= stock.ticker %>">
                 <div id="<%=stock.ticker%>" class="stock">
                   <p class="name"><%= stock.name %></p>
-                  <p class="ticker num"><%= stock.ticker %></p>
+                  <p class="ticker"><%= stock.ticker %></p>
                   <p class="price num"><%= stock.current_price %></p>
                   <% dif = 'zero'
                      if(stock.change > 0)
@@ -28,7 +28,6 @@
               </a>
           <% end %>
 		</div>
-		<a id="load" href="javascript:void(0)">load more results</a>
 	</div>
 </body>
 </html>
