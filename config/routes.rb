@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'login' => 'login#index'
   post 'feed' => 'facebook#feed'
   post 'status' => 'facebook#status'
+  get 'stocks' => 'stocks#index'
 
   # Facebook callback
   get 'auth/:provider/callback', to: 'sessions#create'
