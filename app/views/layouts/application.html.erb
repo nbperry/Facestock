@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Facestock</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+      <title>Facestock</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
 
-<%= yield %>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-</body>
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/">Stocks</a></li>
+              <li><a href="/">Calendar</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <!-- if authenticated show profile and logout buttons -->
+               <% if @current_user != nil%>
+                  <p class="navbar-text">
+                    <a href="#" class="navbar-link">Welcome <%= @current_user.name %></a>
+                  </p>
+                  <li class="navbar-link"><%= link_to "Logout", '/logout' %></li>
+              <% else %>
+                <!-- Otherwise show login button -->
+                <li class="navbar-link"><%= link_to "Login", '/auth/facebook' %></li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="container">
+            <%= yield %>
+        </div>
+
+    </body>
 </html>

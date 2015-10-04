@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.2.3
+
+addons:
+  postgresql: "9.3"
+
+before_script:
+  - mysql -e 'create database myapp_test;'
+  #- cp config/database.yml.travis config/database.yml
+  #- psql -c 'create database travis_ci_test;' -U postgres
+
+before_install:
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
+
+
+notifications:
+  slack: facestock:aa2ZsjKISKTUT320lxuFPOBT

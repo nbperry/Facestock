@@ -1,0 +1,7 @@
+<% @results.each do |result| %>
+<!-- Display each result -->
+    <p></p>
+<% end %>
+
+<%= link_to 'Previous', url_for(:page => @results.previous_page_params) %>
+<%= link_to 'Next', url_for(:page => @results.next_page_params) %>
