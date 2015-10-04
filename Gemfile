@@ -36,8 +36,8 @@ gem "koala", "~> 2.2"
 gem 'pg', group: [:production, :staging]
 
 #Windows compatibility
-gem 'nokogiri', '1.6.7.rc3'
-gem 'tzinfo-data'
+#gem 'nokogiri', '1.6.7.rc3'
+#gem 'tzinfo-data'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
