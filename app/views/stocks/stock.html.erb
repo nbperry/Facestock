@@ -4,21 +4,26 @@
 
 </head>
 <body>
+
+    <%= form_tag("/stocks/stock", method: "get") do %>
+        <%= label_tag(:ticker, "Search for:") %>
+        <%= text_field_tag(:ticker) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+
     <h1> <%= @name %> ( <%= @stock %> )</h1>
     <br>
-    ask <%= @ask %>
+    Asking Price: <%= @ask %>
     <br>
-    high <%= @high %>
+    Daily High: <%= @high %>
     <br>
-    low <%= @low %>
+    Daily Low: <%= @low %>
     <br>
-    high year <%= @high52 %>
+    Year High: <%= @high52 %>
     <br>
-    low year <%= @low52 %>
+    Year Low: <%= @low52 %>
     <br>
-    last close <%= @lastclose %>
-    <br>
-    close <%= @close %>
+    Closing Price: <%= @close %>
     <br>
     <%=
         high_chart("line", @show)
