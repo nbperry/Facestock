@@ -14,7 +14,7 @@ class FacebookController < ApplicationController
     #If user is not null then post the message
     if current_user != nil
       #if the form message is empty then dont make a post
-      if params[:message] != "" && params[:message] != nil
+      if params[:message] != nil
 
         accessToken = current_user.token
         facebook = Koala::Facebook::API.new(accessToken)
@@ -24,7 +24,7 @@ class FacebookController < ApplicationController
         facebook.put_wall_post(message)
       end
     end
-    redirect_to root_url
+
 
   end
 end
