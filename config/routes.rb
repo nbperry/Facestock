@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   get 'login' => 'login#index'
+  get 'stocks' => 'stocks#index'
 
   # Facebook callback
   get 'auth/:provider/callback', to: 'sessions#create'

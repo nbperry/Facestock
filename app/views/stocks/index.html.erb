@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    'stocks', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'stocks', 'data-turbolinks-track' => true %>
+</head>
+<body>
+	<div id="top">
+	</div>
+	<div id="search">
+		<input type="text" name="search">
+		<div id="searchResults">
+          <% @stocks.each do |stock| %>
+              <a href="stock?ticker=<%= stock.ticker %>">
+                <div id="<%=stock.ticker%>" class="stock">
+                  <p class="name"><%= stock.name %></p>
+                  <p class="ticker num"><%= stock.ticker %></p>
+                  <p class="price num"><%= stock.current_price %></p>
+                  <% dif = 'zero'
+                     if(stock.change > 0)
+                      dif = 'pos'
+                     elsif(stock.change < 0)
+                      dif = 'neg'
+                     end
+                  %>
+                  <p class="<%= dif %> num"><%= stock.change %></p>
+                </div>
+              </a>
+          <% end %>
+		</div>
+		<a id="load" href="javascript:void(0)">load more results</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+#search {
+	position: fixed;
+	width: 45%;
+	display: inline-block;
+	bottom: 20px;
+	top: 0;
+}
+#searchResults {
+	overflow-y: scroll;
+	height: 90%;
+}
+
+.stock * {
+	display: inline-block;
+	width: 45%;
+	padding: 0;
+	margin: 0;
+}
+.stock .num {
+	width: 15%;
+	text-align: right;
+}
+
+.neg {
+	color: red;
+}
+.pos {
+	color: green;
+}
+
+.hidden {
+	display: none;
+}
