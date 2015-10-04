@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
 </head>
 <body>
     <h1> <%= @name %> ( <%= @stock %> )</h1>
@@ -20,8 +20,9 @@
     <br>
     close <%= @close %>
     <br>
-    Line Chart
-    <%= @chart %>
+    <%=
+        high_chart("line", @show)
+    %>
 
 </body>
 </html>
