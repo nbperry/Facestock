@@ -10,12 +10,22 @@
     data-show-faces="true">
   </div>
   <script>
-    window.fbAsyncInit = function() {
-      FB.init({ appId      : '1633633020219850',
-                xfbml      : true,
-                version    : 'v2.4'
-      });
-    };
+
+      <% if Rails.env.development?%>
+            window.fbAsyncInit = function() {
+              FB.init({ appId      : '1633633020219850',
+                        xfbml      : true,
+                        version    : 'v2.4'
+              });
+            };
+      <% else %>
+          window.fbAsyncInit = function() {
+              FB.init({ appId      : '1634892103427275',
+                  xfbml      : true,
+                  version    : 'v2.4'
+              });
+          };
+      <% end %>
 
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
