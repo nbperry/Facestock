@@ -51,7 +51,6 @@ class StocksController < ApplicationController
   def destroy
 
   end
-
   def index
     yahoo_client = YahooFinance::Client.new
     @symbols = yahoo_client.symbols_by_market('us', 'nyse')

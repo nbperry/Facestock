@@ -29,6 +29,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'yahoo-finance'
 gem 'lazy_high_charts'
 
+#calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 # Facebook
 gem 'omniauth-facebook'
 gem "koala", "~> 2.2"
