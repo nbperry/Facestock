@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   get 'login' => 'login#index'
-  post 'feed' => 'facebook#feed'
+  get 'feed' => 'facebook#feed'
   post 'status' => 'facebook#status'
   get 'stocks' => 'stocks#index'
   get 'stocks/stock'

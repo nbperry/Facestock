@@ -6,6 +6,21 @@ class FacebookController < ApplicationController
     #facebook = Koala::Facebook::API.new(accessToken)
 
     #@results = params[:page] ? facebook.get_page(params[:page]) : facebook.get_connections("me", "feed")
+
+    #If user is not null then post the message
+    if current_user != nil
+      #if the form message is empty then dont make a post
+
+
+        accessToken = current_user.token
+        @facebook = Koala::Facebook::API.new(accessToken)
+
+
+        @result = @facebook.get_connections('me', 'feed')
+
+    end
+
+    redirect_to root_url
   end
 
   #method for sharing a status on facebook
