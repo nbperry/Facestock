@@ -1,6 +1,10 @@
 <% @results.each do |result| %>
-<!-- Display each result -->
-    <p></p>
+
+    <!-- Display each result -->
+    <% if result["message"] != nil %>
+        <p><%= result["message"] %></p>
+    <% end %>
+
 <% end %>
 
 <%= link_to 'Previous', url_for(:page => @results.previous_page_params) %>
