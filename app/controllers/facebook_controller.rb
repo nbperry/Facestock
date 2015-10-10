@@ -16,11 +16,11 @@ class FacebookController < ApplicationController
         @facebook = Koala::Facebook::API.new(accessToken)
 
 
-        @result = @facebook.get_connections('me', 'feed')
+        @results = @facebook.get_connections('me', 'feed')
 
     end
 
-    redirect_to root_url
+    #redirect_to root_url
   end
 
   #method for sharing a status on facebook
