@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // page is now ready, initialize the calendar...
-        $('#calendar').fullCalendar({
-            editable: true,
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            events: [
-                {
-                    title: 'My Event',
-                    start: '2015-10-03',
-                    description: 'This is a cool event'
-                }
-                // more events here
-            ],
-            eventSource: [{
-                url: '/events'
-            }]
-        });
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // page is now ready, initialize the calendar...
+            $('#calendar').fullCalendar({
+                editable: true,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: [
+                    {
+                        title: 'My Event',
+                        start: '2015-10-03',
+                        description: 'This is a cool event'
+                    }
+                    // more events here
+                ],
+                eventSource: [{
+                    url: '/events'
+                }]
+            });
 
-    });
-    $(document).ready(function() {
-        $( "#tabs" ).tabs();
-    });
-</script>
+        });
+        $(document).ready(function() {
+            $( "#tabs" ).tabs();
+        });
+    </script>
 </head>
 <body>
 
