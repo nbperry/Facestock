@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-ui
 //= require turbolinks
+//= require_tree .
 
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
@@ -21,4 +22,3 @@
 
 //= require moment
 //= require fullcalendar
-//= require jquery-ui
