@@ -33,6 +33,8 @@ gem 'lazy_high_charts'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-ui-rails'
+#makes jquery work
+gem 'rails_12factor', group: :production
 
 # Facebook
 gem 'omniauth-facebook'
