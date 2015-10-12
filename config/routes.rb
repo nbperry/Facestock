@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'stocks' => 'stocks#index'
   get 'stocks/stock'
   get 'calendar' => 'calendar#index'
+  get 'events' => 'events#index'
+
+  resources :events
 
   # Facebook callback
   get 'auth/:provider/callback', to: 'sessions#create'

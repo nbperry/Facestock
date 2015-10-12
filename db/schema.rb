@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005014618) do
+ActiveRecord::Schema.define(version: 20151011170110) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean  "all_day"
+    t.text     "description", limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.string   "ticker",        limit: 255

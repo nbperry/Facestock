@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+    $(document).ready(function() {
 
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            editable: true,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            events: [
+                {
+                    title: 'My Event',
+                    start: '2015-10-03',
+                    description: 'This is a cool event'
+                }
+                // more events here
+            ]
+        })
+
+    });
+</script>
 </head>
 <body>
-Calendar
 
-    <div id='calendar'>
-      <script>
-        $('#calendar').fullCalendar();
-      </script>
-    </div>
+<%= link_to "new event", new_event_path %>
+
+<div id='calendar'></div>
 
 </body>
 </html>
