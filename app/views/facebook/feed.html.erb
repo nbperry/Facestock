@@ -1,7 +1,23 @@
-<% @results.each do |result| %>
-<!-- Display each result -->
-    <p></p>
+
+<% if @results != nil %>
+    <% @results.each do |result| %>
+
+        <!-- Display each result -->
+        <% if result["message"] != nil %>
+            <div class="feedDiv">
+              <p><%= result["message"] %></p>
+              <!--</br>-->
+              <p>
+                Posted at:
+                <%= DateTime.strptime(result["created_time"],"%Y-%m-%dT%H:%M:%S %Z").strftime("%m/%d/%Y %I:%M:%S %p") %>
+              </p>
+            </div>
+        <% end %>
+
+    <% end %>
+    <!--
+          link_to 'Previous', url_for(:page => @results.previous_page_params)
+          link_to 'Next', url_for(:page => @results.next_page_params)
+    -->
 <% end %>
 
-<%= link_to 'Previous', url_for(:page => @results.previous_page_params) %>
-<%= link_to 'Next', url_for(:page => @results.next_page_params) %>
