@@ -16,4 +16,10 @@
       <%= render :template => 'facebook/feed' %>
     </div>
     <div class="col-md-4">Stocks</div>
-    <div class="col-md-4">Chat</div>
+    <div class="col-md-4">Chat
+
+      <% @messages.each do |message| %>
+          <p><%= message.user.name %> : <%=message.message %></p>
+      <% end %>
+
+    </div>

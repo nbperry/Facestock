@@ -16,6 +16,7 @@ class WelcomeController < ApplicationController
 
         end
 
+        @messages = Message.all
 
     end
 
