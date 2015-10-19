@@ -9,6 +9,11 @@ $(document).ready(function(e){
         LoadChat();
         //$("#message_message").val("");
     });
+
+    $("#new_message").on("ajax:success", function(e, data, status, xhr){
+        $("#message_message").val("");
+        alert("This work?");
+    });
 });
 
 
@@ -18,7 +23,7 @@ function LoadChat(){
         $("#chatMessages").text("");
         for (var key in data) {
             var message=data[key]
-            var outputLine = "<p>" + message.user.name + ": " + message.message + "</p>"
+            var outputLine = "<p class=\"well well-sm\">" + message.user.name + ": " + message.message + "</p>"
 
             $( "#chatMessages" ).append( outputLine );
 
@@ -28,4 +33,4 @@ function LoadChat(){
 
 setInterval(function() {
     LoadChat()
-}, 1000);
+}, 10000);
