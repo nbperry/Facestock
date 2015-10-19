@@ -1,3 +1,5 @@
+
+
     <div class="col-md-4">
      Facebook Status
       <% if @current_user != nil%>
@@ -18,8 +20,23 @@
     <div class="col-md-4">Stocks</div>
     <div class="col-md-4">Chat
 
-      <% @messages.each do |message| %>
-          <p><%= message.user.name %> : <%=message.message %></p>
-      <% end %>
+      <div id="chatMessages">
+          <% @messages.each do |message| %>
+              <p><%= message.user.name %> : <%=message.message %></p>
+          <% end %>
+      </div>
+
+      <div id="chatBox">
+          <%= form_for(Message.new, remote: true) do |f| %>
+              <div class="field">
+                <%= f.label :message %><br>
+                <%= f.text_area :message %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit %>
+              </div>
+          <% end %>
+      </div>
 
     </div>

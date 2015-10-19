@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.all
+    render json: @messages.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}})
   end
 
   # GET /messages/1
@@ -36,6 +37,7 @@ class MessagesController < ApplicationController
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
