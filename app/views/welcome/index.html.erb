@@ -1,4 +1,3 @@
-
     <div class="col-md-4">
       <div class="panel panel-primary">
           <div class="panel-heading">Facebook Status</div>
@@ -42,7 +41,7 @@
               </div>
 
               <div id="chatBox">
-                  <%= form_for(Message.new, remote: true) do |f| %>
+                  <%= form_for(Message.new, :url => {:action => 'create', controller: 'messages', :format => :js}, remote: true) do |f| %>
                       <div class="field form-group">
                         <%= f.label :message%><br>
                         <%= f.text_area :message , class: "form-control input-md" %>
