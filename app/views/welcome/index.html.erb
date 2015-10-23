@@ -47,7 +47,7 @@
                   </div>
 
                   <div id="chatBox">
-                      <%= form_for(Message.new, :url => {:action => 'create', controller: 'messages', :format => :js}, remote: true) do |f| %>
+                      <%= form_for(Message.new, remote: true, :format => :js) do |f| %>
                           <div class="field form-group">
                             <%= f.label :message%><br>
                             <%= f.text_area :message , class: "form-control input-md" %>

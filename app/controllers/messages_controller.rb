@@ -34,12 +34,11 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id=current_user.id
 
-    #respond_to do |format|
+    respond_to do |format|
       if @message.save
-        #format.js
-        format.json { render json: @message.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}}) }
+        format.js { render nothing: true }
       end
-    #end
+    end
   end
 
   # PATCH/PUT /messages/1
