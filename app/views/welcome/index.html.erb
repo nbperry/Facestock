@@ -36,24 +36,26 @@
         <div class="panel panel-primary">
           <div class="panel-heading">Chat</div>
           <div class="panel-body">
-              <div id="chatMessages">
-                  <% @messages.each do |message| %>
-                      <div class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
-                  <% end %>
-              </div>
+                <% if @current_user != nil %>
+                  <div id="chatMessages">
+                      <% @messages.each do |message| %>
+                          <div class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
+                      <% end %>
+                  </div>
 
-              <div id="chatBox">
-                  <%= form_for(Message.new, :url => {:action => 'create', controller: 'messages', :format => :js}, remote: true) do |f| %>
-                      <div class="field form-group">
-                        <%= f.label :message%><br>
-                        <%= f.text_area :message , class: "form-control input-md" %>
-                      </div>
+                  <div id="chatBox">
+                      <%= form_for(Message.new, :url => {:action => 'create', controller: 'messages', :format => :js}, remote: true) do |f| %>
+                          <div class="field form-group">
+                            <%= f.label :message%><br>
+                            <%= f.text_area :message , class: "form-control input-md" %>
+                          </div>
 
-                      <div class="actions">
-                        <%= f.submit "Send Message", class: "btn btn-primary" %>
-                      </div>
-                  <% end %>
-              </div>
+                          <div class="actions">
+                            <%= f.submit "Send Message", class: "btn btn-primary" %>
+                          </div>
+                      <% end %>
+                  </div>
+                <% end %>
           </div>
         </div>
     </div>
