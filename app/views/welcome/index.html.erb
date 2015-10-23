@@ -36,10 +36,13 @@
         <div class="panel panel-primary">
           <div class="panel-heading">Chat</div>
           <div class="panel-body">
+
                 <% if @current_user != nil %>
                   <div id="chatMessages">
                       <% @messages.each do |message| %>
-                          <div class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
+                        <% if message.created_at > @current_user.updated_at %>
+                            <div class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
+                        <% end %>
                       <% end %>
                   </div>
 

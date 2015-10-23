@@ -5,6 +5,11 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.all
+    #if there is a user logged in
+    if current_user != nil
+      #only load all of the chat messages since the user last logged in
+      @messages = Message.where("updated_at >= ?", current_user.updated_at)
+    end
     render json: @messages.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}})
   end
 
@@ -29,11 +34,12 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id=current_user.id
 
-    respond_to do |format|
+    #respond_to do |format|
       if @message.save
-        format.js
+        #format.js
+        format.json { render json: @message.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}}) }
       end
-    end
+    #end
   end
 
   # PATCH/PUT /messages/1

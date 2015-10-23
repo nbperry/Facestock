@@ -3,18 +3,20 @@
  */
 
 //Quick and Dirty way to go about updating the Chat on homepage
-$(document).ready(function(e){
+$(document).load(function(e){
 
     //Attach an on ajax:success event handler to the chat message form
     $("#new_message").on("ajax:success", function(e, data, status, xhr){
-        LoadChat();
-        $("#message_message").val("");
+
     });
 });
 
+$(document).on('ajax:success', '.new_message', function(e) {
+    alert("This work");
+});
 
 function LoadChat(){
-    $.get( "/messages", function( data ) {
+    $.get( "/messages", function(data) {
 
         $("#chatMessages").text("");
         for (var key in data) {
