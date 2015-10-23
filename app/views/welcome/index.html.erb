@@ -55,9 +55,11 @@
 
                           <div class="actions">
                             <%= f.submit "Send Message", class: "btn btn-primary" %>
+                            <%= link_to 'Download Chat', downloadMessage_path(), class: "btn btn-primary" %>
                           </div>
                       <% end %>
                   </div>
+
                 <% end %>
           </div>
         </div>

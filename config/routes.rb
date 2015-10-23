@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'stocks/stock'
   get 'calendar' => 'calendar#index'
   get 'events' => 'events#index'
+  get 'downloadMessage' => 'messages#download', :defaults => { :format => 'txt' }
 
   resources :events
 

@@ -13,6 +13,20 @@ class MessagesController < ApplicationController
     render json: @messages.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}})
   end
 
+  def download
+    @messages = Message.all
+    #if there is a user logged in
+    if current_user != nil
+      #only load all of the chat messages since the user last logged in
+      @messages = Message.where("updated_at >= ?", current_user.updated_at)
+    end
+
+
+    respond_to do |format|
+      format.text { send_data @messages.to_json(except: [:id, :created_at, :updated_at, :user_id], include: {:user => {:only => :name}}),type: :json, disposition: "attachment" }
+    end
+  end
+
   # GET /messages/1
   # GET /messages/1.json
   def show
