@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+load 'db/seeds/userstocks.rb'
+
 Stock.delete_all
 yahoo_client = YahooFinance::Client.new
 symbols = yahoo_client.symbols_by_market('us', 'nyse')

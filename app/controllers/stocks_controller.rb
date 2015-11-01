@@ -17,8 +17,6 @@ class StocksController < ApplicationController
       @low52 = data.low_52_weeks
       @close = data.close
       @name = data.name
-      #make the chart 2d array
-      xy = []
       dates = []
       values = []
       chart.each do |this|
@@ -54,6 +52,7 @@ class StocksController < ApplicationController
   def index
     #for now we'll get them here
     @stocks = Stock.all
+    @userstocks = Userstock.all
   end
   def data
     #default values
