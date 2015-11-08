@@ -4,13 +4,13 @@
   <%= stylesheet_link_tag    'stocks', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
-
 <h1>My Stocks</h1>
 <%= form_tag("/stocks/stock", method: "get") do %>
     <%= label_tag(:ticker, "Search for:") %>
     <%= text_field_tag(:ticker) %>
     <%= submit_tag("Search") %>
 <% end %>
+<p id="notice"><%= alert %></p>
 <% @userstocks.each do |onestock| %>
     <% if (session[:user_id].to_i.eql? onestock[:userID].to_i) %>
             <% #get stocks from yahoo into data
