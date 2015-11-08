@@ -5,48 +5,21 @@
 </head>
 <body>
 
-    <% if false %>
-        <div id="search">
-            <input type="text" name="search">
-            <div id="searchResults">
-              <% @stocks.each do |stock| %>
-                  <a href="/stocks/stock?ticker=<%= stock.ticker %>">
-                    <div id="<%=stock.ticker%>" class="stock">
-                      <p class="name"><%= stock.name %></p>
-                      <p class="ticker"><%= stock.ticker %></p>
-                      <p class="price num"><%= stock.current_price %></p>
-                      <% dif = 'zero'
-                         if(stock.change > 0)
-                          dif = 'pos'
-                         elsif(stock.change < 0)
-                          dif = 'neg'
-                         end
-                      %>
-                      <p class="<%= dif %> num"><%= stock.change %></p>
-                    </div>
-                  </a>
-              <% end %>
-            </div>
-        </div>
-    <% end %>
-
-    <% @userstocks.each do |onestock| %>
-        <%=
-            #get stocks from yahoo into data, chart info is for the interactive chart
+<h1>My Stocks</h1>
+<%= form_tag("/stocks/stock", method: "get") do %>
+    <%= label_tag(:ticker, "Search for:") %>
+    <%= text_field_tag(:ticker) %>
+    <%= submit_tag("Search") %>
+<% end %>
+<% @userstocks.each do |onestock| %>
+    <% if (session[:user_id].to_i.eql? onestock[:userID].to_i) %>
+            <% #get stocks from yahoo into data
             yahoo_client = YahooFinance::Client.new
             #this is the stock you will get
             stock = onestock.ticker
-            #chart = yahoo_client.historical_quotes(stock, { start_date: Time::now-(24*60*60*30), end_date: Time::now })
-            data = yahoo_client.quote([stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false})
-            #dates = []
-            #values = []
-            #chart.each do |this|
-            #    dates.unshift(this[:trade_date])
-            #    values.unshift(this[:close].to_f)
-            #end
-        %>
-
-        <h1> <%= data.name %> ( <%= stock %> )</h1>
+            data = yahoo_client.quote([stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false}) %>
+        <br>
+        <h2> <%= data.name %> ( <%= stock %> )</h2>
         <br>
         <a href="/stocks/stock?ticker=<%= stock %>"> Click here for detailed information </a>
         <br>
@@ -54,7 +27,9 @@
         <br>
         Closing Price: <%= data.close %>
         <br>
+    <% else %>
     <% end %>
+<% end %>
 
 </body>
 </html>

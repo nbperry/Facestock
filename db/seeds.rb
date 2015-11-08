@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+load 'db/seeds/users.rb'
 load 'db/seeds/userstocks.rb'
 
 #Stock.delete_all
