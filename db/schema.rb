@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20151018152504) do
+
 
   create_table "events", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -51,6 +53,16 @@ ActiveRecord::Schema.define(version: 20151018152504) do
     t.datetime "expires_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "userstocks", force: :cascade do |t|
+    t.integer  "userStockID",   limit: 4
+    t.integer  "userID",        limit: 4
+    t.string   "ticker",        limit: 255
+    t.integer  "quantity",      limit: 4
+    t.string   "stockMessages", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_foreign_key "messages", "users"

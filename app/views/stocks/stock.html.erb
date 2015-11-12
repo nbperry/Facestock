@@ -4,13 +4,12 @@
 
 </head>
 <body>
-
     <%= form_tag("/stocks/stock", method: "get") do %>
         <%= label_tag(:ticker, "Search for:") %>
         <%= text_field_tag(:ticker) %>
         <%= submit_tag("Search") %>
     <% end %>
-
+    <p id="notice"><%= alert %></p>
     <h1> <%= @name %> ( <%= @stock %> )</h1>
     <br>
     Asking Price: <%= @ask %>

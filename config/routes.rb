@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'status' => 'facebook#status'
   get 'stocks' => 'stocks#index'
   get 'stocks/stock'
+  get 'stocks/data'
   get 'calendar' => 'calendar#index'
   get 'events' => 'events#index'
   get 'downloadMessage' => 'messages#download', :defaults => { :format => 'txt' }
