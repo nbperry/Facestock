@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :messages
+  has_many :userstocks
 
   def self.omniauth(auth)
 

@@ -16,7 +16,17 @@ class WelcomeController < ApplicationController
 
         end
 
+        #get all chat messages
         @messages = Message.all
+
+
+        #if a user is logged in get their userstocks
+        if @current_user != nil
+            @topStocks = User.find(@current_user).userstocks
+        else
+            @topStocks = nil
+        end
+=]
 
     end
 
