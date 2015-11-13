@@ -36,7 +36,7 @@ addUser = [
     }
 ]
 
-User.delete_all
+#User.delete_all
 addUser.each do |addThis|
   User.find_or_create_by!(addThis)
 end
