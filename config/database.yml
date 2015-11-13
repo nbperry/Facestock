@@ -51,7 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: Facestock_production
-  username: Facestock
+  database: d2hjh3pmfhklrc
+  username: <%= ENV['FACESTOCK_DATABASE_USERNAME'] %>
   password: <%= ENV['FACESTOCK_DATABASE_PASSWORD'] %>
 
