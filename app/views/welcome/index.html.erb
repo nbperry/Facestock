@@ -1,19 +1,78 @@
+    <%= javascript_include_tag "chat" %>
+
     <div class="col-md-4">
-     Facebook Status
-      <% if @current_user != nil%>
-          <form action="/status" method="post">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            Status
-            </br>
-                <textarea rows="5" cols="35" name="message"></textarea>
-            </br>
-            <input type="submit" value="Submit">
-          </form>
-      <% end %>
+      <div class="panel panel-primary">
+          <div class="panel-heading">Facebook Status</div>
+          <div class="panel-body">
+              <% if @current_user != nil%>
+                  <form action="/status" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    Status
+                    </br>
+                        <textarea class="form-control input-md" rows="4" cols="35" name="message"></textarea>
+                    </br>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                  </form>
+              <% end %>
 
-      </br>
 
-      <%= render :template => 'facebook/feed' %>
+              </br>
+
+              <%= render :template => 'facebook/feed' %>
+          </div>
+      </div>
     </div>
-    <div class="col-md-4">Stocks</div>
-    <div class="col-md-4">Chat</div>
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Stocks</div>
+          <div class="panel-body">
+            <% if @current_user != nil %>
+                <div id="TopStocks">
+                  <% @topStocks.each do |stock| %>
+                      <div class="well well-sm">
+                        <h4><%= stock.ticker %></h4>
+                        <p>Quantity: <%= stock.quantity %></p>
+                        <% if stock.stockMessages != nil %>
+                            <p>Note: <%= stock.stockMessages %></p>
+                        <% end %>
+                      </div>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Chat</div>
+          <div class="panel-body">
+
+                <% if @current_user != nil %>
+                  <div id="chatMessages">
+                      <% @messages.each do |message| %>
+                        <% if message.created_at > @current_user.updated_at %>
+                            <div id="chat_message" class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
+                        <% end %>
+                      <% end %>
+                  </div>
+
+                  <div id="chatBox">
+                      <%= form_for(Message.new, remote: true, :format => :js) do |f| %>
+                          <div class="field form-group">
+                            <%= f.label :message%><br>
+                            <%= f.text_area :message , class: "form-control input-md" %>
+                          </div>
+
+                          <div class="actions">
+                            <%= f.submit "Send Message", class: "btn btn-primary" %>
+                            <%= link_to 'Download Chat', downloadMessage_path(), class: "btn btn-primary" %>
+                          </div>
+                      <% end %>
+                  </div>
+
+                <% end %>
+          </div>
+        </div>
+    </div>

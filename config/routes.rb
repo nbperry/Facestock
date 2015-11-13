@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   root 'welcome#index'
 
   # Example of regular route:
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'stocks/data'
   get 'calendar' => 'calendar#index'
   get 'events' => 'events#index'
+  get 'downloadMessage' => 'messages#download', :defaults => { :format => 'txt' }
 
   resources :events
 

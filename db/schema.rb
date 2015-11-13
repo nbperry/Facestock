@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20151101015624) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "message",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "stocks", force: :cascade do |t|
     t.string   "ticker",        limit: 255
     t.string   "name",          limit: 255
@@ -46,7 +55,7 @@ ActiveRecord::Schema.define(version: 20151101015624) do
 
   create_table "userstocks", force: :cascade do |t|
     t.integer  "userStockID",   limit: 4
-    t.integer  "userID",        limit: 4
+    t.integer  "user_id",       limit: 4
     t.string   "ticker",        limit: 255
     t.integer  "quantity",      limit: 4
     t.string   "stockMessages", limit: 255
@@ -54,4 +63,8 @@ ActiveRecord::Schema.define(version: 20151101015624) do
     t.datetime "updated_at"
   end
 
+  add_index "userstocks", ["user_id"], name: "index_userstocks_on_user_id", using: :btree
+
+  add_foreign_key "messages", "users"
+  add_foreign_key "userstocks", "users"
 end
