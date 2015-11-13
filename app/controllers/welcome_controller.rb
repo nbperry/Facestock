@@ -16,6 +16,15 @@ class WelcomeController < ApplicationController
 
         end
 
+        #if a user is logged in get their userstocks
+        if @current_user != nil
+            @topStocks = User.find(@current_user).userstocks.order("quantity desc").limit(5)
+        else
+            @topStocks = nil
+        end
+
+        #get all chat messages
+        @messages = Message.all
 
     end
 
