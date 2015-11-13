@@ -27,7 +27,19 @@
         <div class="panel panel-primary">
           <div class="panel-heading">Stocks</div>
           <div class="panel-body">
-
+            <% if @current_user != nil %>
+                <div id="TopStocks">
+                  <% @topStocks.each do |stock| %>
+                      <div class="well well-sm">
+                        <h4><%= stock.ticker %></h4>
+                        <p>Quantity: <%= stock.quantity %></p>
+                        <% if stock.stockMessages != nil %>
+                            <p>Note: <%= stock.stockMessages %></p>
+                        <% end %>
+                      </div>
+                  <% end %>
+                </div>
+            <% end %>
           </div>
         </div>
     </div>
@@ -41,7 +53,7 @@
                   <div id="chatMessages">
                       <% @messages.each do |message| %>
                         <% if message.created_at > @current_user.updated_at %>
-                            <div class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
+                            <div id="chat_message" class="well well-sm"><%= message.user.name %> : <%=message.message %></div>
                         <% end %>
                       <% end %>
                   </div>
