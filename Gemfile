@@ -62,7 +62,7 @@ group :development, :test do
   # gem 'byebug'
 
   #RSpec is used for unit testing
-  gem 'rspec-rails', '~> 3.0'
+  #gem 'rspec-rails', '~> 3.0'
 
   #Used for doing coverage testing on our application
   gem 'simplecov', require: false
