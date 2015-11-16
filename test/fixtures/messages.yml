@@ -2,8 +2,8 @@
 
 one:
   message: MyText
-  user_id: 
+  user_id: 980190963
 
 two:
-  message: MyText
-  user_id: 
+  message: MyText2
+  user_id: 980190963
