@@ -60,6 +60,13 @@ gem 'pg', group: [:production, :staging]
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
+
+  #RSpec is used for unit testing
+  #gem 'rspec-rails', '~> 3.0'
+
+  #Used for doing coverage testing on our application
+  gem 'simplecov', require: false
+
 end
 
 group :development do

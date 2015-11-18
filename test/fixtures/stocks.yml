@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  [ticker: MyString
-  name: MyString
+  ticker: "MyString"
+  name: "MyString"
   current_price: 9.99
   change: 9.99
   updated: 
 
 two:
-  [ticker: MyString
+  ticker: MyString
   name: MyString
   current_price: 9.99
   change: 9.99
