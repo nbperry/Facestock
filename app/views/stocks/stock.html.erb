@@ -29,12 +29,10 @@
     %>
 
     <%= form_tag("/stocks/stock", method: "post") do %>
-        <%= text_field_tag(:ticker) %>
         <%= label_tag (:transaction) %><br>
         <%= number_field_tag (:transaction) %>
-        <%= submit_tag("Stock Transaction") %>
+        <%= submit_tag("Stock Transaction", name: 'transaction') %>
     <% end %>
-    <%= debug params[:ticker] %>
 
 </body>
 </html>
