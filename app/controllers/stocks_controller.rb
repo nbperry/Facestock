@@ -2,10 +2,14 @@ class StocksController < ApplicationController
   require 'json'
   require 'ostruct'
   def stock
-    if params[:transaction]
+    if params[:stock_transaction]
       # Redirect to show the newly created record, for example.
-      flash[:notice] = "Stock Transaction Went Through."
-      redirect_to :back, :alert => "Transaction Happened!"
+      change = params[:transaction]
+      tick = params[:ticker]
+      #alterUserStock = Userstock.where("ticker = :theticker AND user_id = :theuserid", {:theticker => tick, :theuserid => 1})# session[:user_id]})
+      Userstock.where(:ticker => tick).where(:user_id => session[:user_id]).update_all("quantity = " + change)
+      #alterUserStock.save
+      redirect_to :back, :alert => "Transaction Happened! " + change + " " + tick + " "
     else
       # Redirect to new form, for example.
       begin
