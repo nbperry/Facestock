@@ -1,35 +1,60 @@
-<!DOCTYPE html>
-<html>
 <head>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <script type="text/javascript">
         $(document).ready(function() {
-            // page is now ready, initialize the calendar...
-            $('#calendar').fullCalendar({
-                editable: true,
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: [
-                    {
-                        title: 'My Event',
-                        start: '2015-10-03',
-                        description: 'This is a cool event'
-                    }
-                    // more events here
-                ],
-                eventSource: [{
-                    url: '/events'
-                }]
-            });
-
+            try {
+                generateCalendar();
+            } catch(err) { // For explanation, see lengthy angry comment below.
+                $('#calendar').fullCalendar({
+                    editable: true,
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    events: rawEvents
+                });
+            }
         });
         $(document).ready(function() {
             $( "#tabs" ).tabs();
         });
+
+        function generateCalendar() {
+            // AJAX call to events.json
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                var eventz = [];
+                var rawEvents = [];
+                if (request.readyState == 4 && request.status == 200) {
+                    eventsLength = request.responseText.length;
+                    console.log(request.responseText);
+                    rawEvents = $.parseJSON(request.responseText);
+                }
+
+                rawEvents[0].anyVariable; // This needs to be here. Why? Who the fuck knows.
+                                    // But, without it, events don't show up on the calendar.
+                                    // Don't believe me? I wouldn't. Delete it and see for
+                                    // yourself. Also, enclosing it inside of a try-catch or
+                                    // if statement causes the calendar to not show events, so
+                                    // I've resorted to putting this whole thing in a function
+                                    // to try-catch at a higher level, in case rawEvents[0]
+                                    // is undefined.
+
+                $('#calendar').fullCalendar({
+                    editable: false,
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    events: rawEvents
+                });
+            };
+            request.open("GET", "events.json", true);
+            request.send();
+        }
     </script>
 </head>
 <body>
@@ -76,5 +101,3 @@
   </div>
 </div>
 
-</body>
-</html>
