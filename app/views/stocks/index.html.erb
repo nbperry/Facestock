@@ -19,7 +19,8 @@
             stock = onestock.ticker
             data = yahoo_client.quote([stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false}) %>
         <br>
-        <h2> <%= data.name %> ( <%= stock %> )</h2>
+        <h2> <a href="/stocks/stock?ticker=<%= stock %>"> <%= data.name %> ( <%= stock %> ) </a>  </h2>
+        Number Owned: <%= onestock.quantity %>
         <br>
         <a href="/stocks/stock?ticker=<%= stock %>"> Click here for detailed information </a>
         <br>
