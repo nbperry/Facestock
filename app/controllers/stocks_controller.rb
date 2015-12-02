@@ -9,7 +9,7 @@ class StocksController < ApplicationController
       if Userstock.exists?(:ticker => tick, :user_id => session[:user_id])
         Userstock.where(:ticker => tick).where(:user_id => session[:user_id]).update_all("quantity = " + change)
       else
-        Userstock.create(:ticker => tick, :quantity => change, :user => session[:user_id])
+        Userstock.create(:ticker => tick, :quantity => change, :user_id => session[:user_id])
       end
       redirect_to :back, :alert => "Transaction Happened! " + change + " " + tick + " "
     else
