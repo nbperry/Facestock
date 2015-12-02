@@ -84,36 +84,8 @@ class StocksController < ApplicationController
       end
     end
   end
-  def create
-
-  end
-  def destroy
-
-  end
   def index
     #for now we'll get them here
     @userstocks = Userstock.all
-  end
-  def data
-    #default values
-    page = 1
-    results = 50
-    order = 'default'
-
-    #any mods
-    if(params.has_key?(:page))
-      if params[:page].to_i > 0
-        page = params[:page].to_i
-      end
-    end
-    if(params.has_key?(:results))
-      if params[:results].to_i > 0
-        results = params[:results].to_i
-      end
-    end
-
-    #return data from the database for ajax calls
-    stocks = Stock.limit(results).offset((page-1)*results)
-    render :json => stocks
   end
 end
