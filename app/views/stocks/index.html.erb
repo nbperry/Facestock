@@ -10,7 +10,6 @@
     <%= text_field_tag(:ticker) %>
     <%= submit_tag("Search") %>
 <% end %>
-<% if session[:user_id] != nil %>
 <p id="notice"><%= alert %></p>
     <% @userstocks.each do |onestock| %>
         <% if (session[:user_id].to_i.eql? onestock[:userID].to_i) %>
@@ -29,10 +28,8 @@
             <br>
             Closing Price: <%= data.close %>
             <br>
-        <% else %>
         <% end %>
     <% end %>
-<% end %>
 
 </body>
 </html>

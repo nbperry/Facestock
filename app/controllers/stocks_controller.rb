@@ -92,10 +92,7 @@ class StocksController < ApplicationController
   end
   def index
     #for now we'll get them here
-    @userstocks = nil
-    if session[:user_id] != nil
-      @userstocks = User.find(@current_user).userstocks.order("quantity desc")
-    end
+    @userstocks = Userstock.all
   end
   def data
     #default values
