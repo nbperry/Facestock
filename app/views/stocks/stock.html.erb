@@ -10,7 +10,7 @@
         <%= submit_tag("Search") %>
     <% end %>
     <p id="notice"><%= alert %></p>
-    <h1> <%= @name %> ( <%= @stock %> )</h1>
+    <h1> <%= @name %> ( <%= @stock.upcase %> )</h1>
     <br>
     Asking Price: <%= @ask %>
     <br>
@@ -27,6 +27,13 @@
     <%=
         high_chart("line", @show)
     %>
+
+    <%= form_tag("/stocks/stock", method: "post") do %>
+        <%= hidden_field_tag(:ticker, @stock.upcase) %>
+        <%= label_tag (:transaction) %><br>
+        <%= number_field_tag (:transaction) %>
+        <%= submit_tag("Stock Transaction", name: 'stock_transaction') %>
+    <% end %>
 
 </body>
 </html>
