@@ -11,24 +11,26 @@
     <%= submit_tag("Search") %>
 <% end %>
 <p id="notice"><%= alert %></p>
-<% @userstocks.each do |onestock| %>
-    <% if (session[:user_id].to_i.eql? onestock[:userID].to_i) %>
-            <% #get stocks from yahoo into data
-            yahoo_client = YahooFinance::Client.new
-            #this is the stock you will get
-            stock = onestock.ticker
-            data = yahoo_client.quote([stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false}) %>
-        <br>
-        <h2> <a href="/stocks/stock?ticker=<%= stock %>"> <%= data.name %> ( <%= stock %> ) </a>  </h2>
-        Number Owned: <%= onestock.quantity %>
-        <br>
-        <a href="/stocks/stock?ticker=<%= stock %>"> Click here for detailed information </a>
-        <br>
-        Total Value: $<%= ((onestock.quantity) * (data.close.to_i)) %>
-        <br>
-        Closing Price: <%= data.close %>
-        <br>
-    <% else %>
+<% if session[:user_id] != nil %>
+    <% @userstocks.each do |onestock| %>
+        <% if (session[:user_id].to_i.eql? onestock[:userID].to_i) %>
+                <% #get stocks from yahoo into data
+                yahoo_client = YahooFinance::Client.new
+                #this is the stock you will get
+                stock = onestock.ticker
+                data = yahoo_client.quote([stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false}) %>
+            <br>
+            <h2> <a href="/stocks/stock?ticker=<%= stock %>"> <%= data.name %> ( <%= stock %> ) </a>  </h2>
+            Number Owned: <%= onestock.quantity %>
+            <br>
+            <a href="/stocks/stock?ticker=<%= stock %>"> Click here for detailed information </a>
+            <br>
+            Total Value: $<%= ((onestock.quantity) * (data.close.to_i)) %>
+            <br>
+            Closing Price: <%= data.close %>
+            <br>
+        <% else %>
+        <% end %>
     <% end %>
 <% end %>
 
