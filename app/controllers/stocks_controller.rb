@@ -6,9 +6,11 @@ class StocksController < ApplicationController
       # Redirect to show the newly created record, for example.
       change = params[:transaction]
       tick = params[:ticker]
-      #alterUserStock = Userstock.where("ticker = :theticker AND user_id = :theuserid", {:theticker => tick, :theuserid => 1})# session[:user_id]})
-      Userstock.where(:ticker => tick).where(:user_id => session[:user_id]).update_all("quantity = " + change)
-      #alterUserStock.save
+      if Userstock.where(:ticker => tick).where(:user_id => session[:user_id]).exists?
+        Userstock.where(:ticker => tick).where(:user_id => session[:user_id]).update_all("quantity = " + change)
+      else
+        Userstock.create(:ticker => tick, :quantity => change, :user => session[:user_id])
+      end
       redirect_to :back, :alert => "Transaction Happened! " + change + " " + tick + " "
     else
       # Redirect to new form, for example.
