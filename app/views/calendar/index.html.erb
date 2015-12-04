@@ -6,6 +6,7 @@
             try {
                 generateCalendar();
             } catch(err) { // For explanation, see lengthy angry comment below.
+                console.log('whaaaaat');
                 $('#calendar').fullCalendar({
                     editable: true,
                     header: {
@@ -31,6 +32,17 @@
                     eventsLength = request.responseText.length;
                     console.log(request.responseText);
                     rawEvents = $.parseJSON(request.responseText);
+                    if ( rawEvents.length == 0 ) {
+                        $('#calendar').fullCalendar({
+                            editable: false,
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay'
+                            }
+                        });
+                        return;
+                    }
                 }
 
                 rawEvents[0].anyVariable; // This needs to be here. Why? Who the fuck knows.
