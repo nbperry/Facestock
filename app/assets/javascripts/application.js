@@ -14,10 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
-
-
-
-
 //= require moment
 //= require fullcalendar
 //= require underscore
