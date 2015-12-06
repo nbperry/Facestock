@@ -23,3 +23,5 @@
 
 //= require moment
 //= require fullcalendar
+
+//= require event-calendar

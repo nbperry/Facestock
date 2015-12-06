@@ -32,8 +32,8 @@ gem 'yahoo-finance'
 gem 'lazy_high_charts'
 
 #calendar
-gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'fullcalendar-rails'
 gem 'jquery-ui-rails'
 #makes jquery work
 gem 'rails_12factor', group: :production

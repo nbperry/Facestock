@@ -17,3 +17,6 @@
 
 # Ignore Test Coverage
 /coverage
+
+# Super secret file
+config/secrets.yml
