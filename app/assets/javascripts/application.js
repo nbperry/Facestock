@@ -18,3 +18,5 @@
 //= require fullcalendar
 //= require underscore
 //= require clndr-rails
+//= require highcharts/highstock
+//= require highcharts/highcharts-more
