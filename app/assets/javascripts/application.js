@@ -14,9 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
-//= require highcharts/highcharts
-//= require highcharts/highcharts-more
-//= require highcharts/highstock
 //= require moment
 //= require fullcalendar
 //= require underscore
