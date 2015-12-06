@@ -23,5 +23,5 @@
 
 //= require moment
 //= require fullcalendar
-
-//= require event-calendar
+//= require underscore
+//= require clndr-rails

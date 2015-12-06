@@ -38,6 +38,9 @@ gem 'jquery-ui-rails'
 #makes jquery work
 gem 'rails_12factor', group: :production
 
+gem 'underscore-rails'
+gem 'clndr-rails'
+
 # Facebook
 gem 'omniauth-facebook'
 gem "koala", "~> 2.2"

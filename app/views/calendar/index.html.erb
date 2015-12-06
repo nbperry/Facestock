@@ -3,19 +3,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <script type="text/javascript">
         $(document).ready(function() {
-            try {
-                generateCalendar();
-            } catch(err) { // For explanation, see lengthy angry comment below.
-                $('#calendar').fullCalendar({
-                    editable: true,
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    events: rawEvents
-                });
-            }
+            $('#calendar').clndr();
         });
         $(document).ready(function() {
             $( "#tabs" ).tabs();
